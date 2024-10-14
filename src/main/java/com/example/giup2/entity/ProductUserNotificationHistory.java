@@ -9,12 +9,7 @@ import java.time.LocalDateTime;
 @Entity
 @NoArgsConstructor
 @Getter
-
-@Table(name = "product_user_notification_history", indexes = {
-        @Index(name = "idx_product_id", columnList = "product_id"),
-        @Index(name = "idx_user_id", columnList = "user_id")
-})
-
+@Table(name = "product_user_notification_history")
 public class ProductUserNotificationHistory {
 
     @Id
@@ -26,11 +21,8 @@ public class ProductUserNotificationHistory {
     private Product product;
 
     private Long userId;
-
     private int restockRound;
-
     private LocalDateTime notificationSentAt;
-
 
     public ProductUserNotificationHistory(Product product, Long userId, int restockRound, LocalDateTime notificationSentAt) {
         this.product = product;
@@ -38,5 +30,4 @@ public class ProductUserNotificationHistory {
         this.restockRound = restockRound;
         this.notificationSentAt = notificationSentAt;
     }
-
 }

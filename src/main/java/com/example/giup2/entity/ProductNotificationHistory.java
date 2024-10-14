@@ -7,12 +7,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Getter
-
-@Table(name = "product_notification_history", indexes = {
-        @Index(name = "idx_product_id", columnList = "product_id"),
-        @Index(name = "idx_status", columnList = "status")
-})
-
+@Table(name = "product_notification_history")
 public class ProductNotificationHistory {
 
     @Id
@@ -28,9 +23,7 @@ public class ProductNotificationHistory {
     @Enumerated(EnumType.STRING)
     private NotificationStatus status;
 
-    public void setStatus(NotificationStatus status) {
-        this.status = status;
-    }
+    private Long lastNotifiedUserId;
 
     public ProductNotificationHistory(Product product, int restockRound, NotificationStatus status) {
         this.product = product;
@@ -38,4 +31,11 @@ public class ProductNotificationHistory {
         this.status = status;
     }
 
+    public void setLastNotifiedUserId(Long lastNotifiedUserId) {
+        this.lastNotifiedUserId = lastNotifiedUserId;
+    }
+
+    public void setStatus(NotificationStatus status) {
+        this.status = status;
+    }
 }

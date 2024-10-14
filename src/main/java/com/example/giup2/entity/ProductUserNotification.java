@@ -4,14 +4,12 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Entity
 @NoArgsConstructor
 @Getter
-
-@Table(name = "product_user_notification", indexes = {
-        @Index(name = "idx_product_id", columnList = "product_id")
-})
-
+@Table(name = "product_user_notification")
 public class ProductUserNotification {
 
     @Id
@@ -23,7 +21,8 @@ public class ProductUserNotification {
     private Product product;
 
     private Long userId;
-
-
+    private boolean isActive;
+    private LocalDateTime createdAt;
+    private LocalDateTime updatedAt;
 
 }
