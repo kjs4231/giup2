@@ -80,9 +80,9 @@ public class ProductService {
 
         // 재고가 소진되었으면 알림 상태를 CANCELED_BY_SOLD_OUT으로 저장하고 중단
         if (product.getStock() <= 0) {
-            System.out.println("재고가 모두 소진되었습니다.");
             notificationHistory.setStatus(NotificationStatus.CANCELED_BY_SOLD_OUT);
             notificationHistoryRepository.save(notificationHistory);
+            System.out.println("재고가 모두 소진되었습니다.");
             return;
         }
 
