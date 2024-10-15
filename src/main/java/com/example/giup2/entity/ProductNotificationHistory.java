@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @Getter
-@Table(name = "product_notification_history")
+@Table(name = "product_notification_history", indexes = {
+        @Index(name = "idx_product_status", columnList = "product_id, status")
+})
 public class ProductNotificationHistory {
 
     @Id

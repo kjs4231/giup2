@@ -4,11 +4,9 @@ import com.example.giup2.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/products")
 public class ProductController {
 
 
@@ -18,10 +16,15 @@ public class ProductController {
         this.productService = productService;
     }
 
-    // 재입고 알림 전송 API
-    @PostMapping("/{productId}/notifications/re-stock")
-    public ResponseEntity<Void> restockAndNotify(@PathVariable Long productId) {
-        productService.notifyUsersOnRestock(productId);  // 재입고 알림 전송
+    @PostMapping("/products/{productId}/notifications/re-stock")
+    public ResponseEntity<Void> restock(@PathVariable Long productId) {
+        productService.restock(productId);
+        return ResponseEntity.ok().build();
+    }
+
+    @PostMapping("/admin/products/{productId}/notifications/re-stock")
+    public ResponseEntity<Void> retry(@PathVariable Long productId) {
+        productService.retry(productId);
         return ResponseEntity.ok().build();
     }
 }

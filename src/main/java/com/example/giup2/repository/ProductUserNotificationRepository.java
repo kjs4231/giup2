@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ProductUserNotificationRepository extends JpaRepository<ProductUserNotification, Long> {
     List<ProductUserNotification> findByProductId(Long productId);
+    List<ProductUserNotification> findByProductIdAndActiveIsTrue(Long productId);
 }
